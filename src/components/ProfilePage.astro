@@ -1,0 +1,182 @@
+---
+import Header from './Header.astro';
+const { lang = 'es' } = Astro.props;
+const es = lang === 'es';
+
+const copy = es ? {
+  role: 'Senior Full Stack Software Engineer',
+  intro: 'Ingeniero de Software Senior con más de 10 años de experiencia desarrollando y modernizando aplicaciones web empresariales, APIs, integraciones y plataformas cloud.',
+  detail: 'Trabajo de punta a punta entre frontend, backend, bases de datos, troubleshooting de producción y liderazgo técnico. Mi enfoque principal está en .NET/C#, React, TypeScript, Vue.js, Laravel, SQL y servicios cloud.',
+  projects: 'Ver proyectos',
+  contact: 'Contactarme',
+  aboutEyebrow: 'Perfil profesional',
+  aboutTitle: 'Software que resuelve problemas reales.',
+  aboutText: 'He participado en productos empresariales, plataformas gubernamentales, CRM, ERP, e-learning, integraciones de pagos y procesos de modernización cloud. Parte de mi experiencia está protegida por acuerdos de confidencialidad; en el portafolio presento esos trabajos como casos de estudio anonimizados.',
+  skills: 'Tecnologías',
+  experience: 'Experiencia',
+  cert: 'Certificación',
+  availability: 'Actualmente abierto a oportunidades',
+  availabilityText: 'Senior Software Engineer · Senior Full Stack Engineer · Backend Engineer · .NET Developer',
+  location: 'San Salvador, El Salvador',
+  contactTitle: '¿Tienes una oportunidad o proyecto?',
+  contactText: 'Puedes contactarme por correo o LinkedIn. También puedes revisar los proyectos seleccionados de mi trayectoria profesional.',
+  email: 'Enviar correo'
+} : {
+  role: 'Senior Full Stack Software Engineer',
+  intro: 'Senior Software Engineer with 10+ years of experience building and modernizing enterprise web applications, APIs, integrations, and cloud platforms.',
+  detail: 'I work end-to-end across frontend, backend, databases, production troubleshooting, and technical leadership. My core stack includes .NET/C#, React, TypeScript, Vue.js, Laravel, SQL, and cloud services.',
+  projects: 'View projects',
+  contact: 'Contact me',
+  aboutEyebrow: 'Professional profile',
+  aboutTitle: 'Software that solves real problems.',
+  aboutText: 'I have contributed to enterprise products, government platforms, CRM, ERP, e-learning, payment integrations, and cloud modernization initiatives. Some of my work is covered by confidentiality agreements; those projects are presented as anonymized case studies.',
+  skills: 'Technology stack',
+  experience: 'Experience',
+  cert: 'Certification',
+  availability: 'Currently open to opportunities',
+  availabilityText: 'Senior Software Engineer · Senior Full Stack Engineer · Backend Engineer · .NET Developer',
+  location: 'San Salvador, El Salvador',
+  contactTitle: 'Have an opportunity or project?',
+  contactText: 'Reach me by email or LinkedIn, and explore selected projects from my professional career.',
+  email: 'Send email'
+};
+
+const groups = [
+  { title: 'Frontend', items: ['React', 'Vue.js', 'TypeScript', 'JavaScript', 'Astro', 'Tailwind CSS', 'Bootstrap'] },
+  { title: 'Backend', items: ['.NET / C#', 'PHP / Laravel', 'Spring Boot', 'REST APIs'] },
+  { title: es ? 'Datos' : 'Data', items: ['SQL Server', 'PostgreSQL', 'MySQL'] },
+  { title: 'Cloud / DevOps', items: ['Google Cloud', 'AWS', 'Azure', 'Docker', 'CI/CD', 'Git'] }
+];
+---
+<Header lang={lang} current="home" />
+
+<main>
+  <section class="hero hero-profile">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">{copy.role}</div>
+        <h1>Carlos<br/>Faustino</h1>
+        <p class="hero-lead">{copy.intro}</p>
+        <p class="muted hero-detail">{copy.detail}</p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href={`/${lang}/projects/`}>{copy.projects}</a>
+          <a class="btn" href="mailto:cr.faustinohernandez@gmail.com">{copy.contact}</a>
+        </div>
+
+        <div class="stack">
+          {['.NET','C#','React','TypeScript','Vue.js','Laravel','Tailwind CSS','REST APIs','SQL','Docker','GCP'].map((item) => <span class="chip">{item}</span>)}
+        </div>
+      </div>
+
+      <div class="portrait-wrap">
+        <div class="portrait-frame">
+          <img src="/profile.jpg" alt="Carlos Faustino" class="portrait" />
+        </div>
+        <div class="portrait-meta">
+          <strong>{copy.location}</strong>
+          <span>10+ years in software engineering</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container about-grid">
+      <div>
+        <div class="eyebrow">{copy.aboutEyebrow}</div>
+        <h2>{copy.aboutTitle}</h2>
+      </div>
+      <div>
+        <p class="about-copy">{copy.aboutText}</p>
+        <div class="availability">
+          <span class="status-dot"></span>
+          <div>
+            <strong>{copy.availability}</strong>
+            <p>{copy.availabilityText}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">{es ? 'Ingeniería' : 'Engineering'}</div>
+          <h2>{copy.skills}</h2>
+        </div>
+      </div>
+      <div class="skill-columns">
+        {groups.map((group) => (
+          <div class="skill-block">
+            <h3>{group.title}</h3>
+            <ul>{group.items.map((item) => <li>{item}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">{es ? 'Trayectoria' : 'Career'}</div>
+          <h2>{copy.experience}</h2>
+        </div>
+      </div>
+
+      <div class="experience-grid">
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>CEREBR4L — Full Stack Engineer</h3>
+            <p>2024 — {es ? 'Actualidad' : 'Present'}</p>
+          </div>
+          <div class="timeline-item">
+            <h3>DC Nearshore — Software Engineer</h3>
+            <p>2021 — 2024</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Weedmaps — Technical Support Engineering Leader / Software Development Engineer</h3>
+            <p>2021 — 2023</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Code Castle — Full Stack Developer / Team Lead</h3>
+            <p>2017 — 2020</p>
+          </div>
+        </div>
+
+        <aside class="credential-card">
+          <span class="eyebrow">{copy.cert}</span>
+          <h3>Microsoft Certified</h3>
+          <p>Power Platform Fundamentals</p>
+          <div class="credential-line"></div>
+          <span class="muted">Microsoft</span>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container contact-card">
+      <div>
+        <div class="eyebrow">{es ? 'Contacto' : 'Contact'}</div>
+        <h2>{copy.contactTitle}</h2>
+        <p class="muted">{copy.contactText}</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:cr.faustinohernandez@gmail.com">{copy.email}</a>
+        <a class="btn" href="https://www.linkedin.com/in/crfaustinohernandez/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© {new Date().getFullYear()} Carlos Faustino</span>
+    <span>Senior Full Stack Software Engineer</span>
+  </div>
+</footer>

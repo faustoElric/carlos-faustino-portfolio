@@ -1,0 +1,131 @@
+---
+import Header from './Header.astro';
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects.js';
+
+const { lang = 'es' } = Astro.props;
+const es = lang === 'es';
+const featured = projects.filter(p => p.featured);
+const more = projects.filter(p => !p.featured);
+
+const categories = [...new Set(projects.map(p => p.category[lang]))];
+
+const copy = es ? {
+  eyebrow: 'Portafolio profesional',
+  title: 'Proyectos y casos de estudio',
+  intro: 'Una selección de software empresarial, plataformas gubernamentales, migraciones cloud, integraciones, sitios corporativos y soluciones e-learning en las que he participado.',
+  featured: 'Proyectos destacados',
+  more: 'Más proyectos',
+  nda: 'Algunos proyectos están sujetos a acuerdos de confidencialidad. En esos casos se presenta únicamente información técnica general y anonimizada, sin publicar código, arquitectura, datos, capturas internas ni documentación propietaria.',
+  back: 'Volver al perfil',
+  all: 'Todos',
+  filter: 'Filtrar por categoría'
+} : {
+  eyebrow: 'Professional portfolio',
+  title: 'Projects & case studies',
+  intro: 'A selection of enterprise software, government platforms, cloud migrations, integrations, corporate websites, and e-learning solutions I have contributed to.',
+  featured: 'Featured projects',
+  more: 'More projects',
+  nda: 'Some projects are subject to confidentiality agreements. For those cases, only general anonymized technical information is shown, without publishing source code, architecture, data, internal screenshots, or proprietary documentation.',
+  back: 'Back to profile',
+  all: 'All',
+  filter: 'Filter by category'
+};
+
+const slug = (value) => value.toLowerCase().replaceAll(' ', '-').replaceAll('&', 'and');
+---
+<Header lang={lang} current="projects" />
+
+<main>
+  <section class="projects-hero">
+    <div class="container">
+      <a class="back-link" href={`/${lang}/`}>← {copy.back}</a>
+      <div class="eyebrow">{copy.eyebrow}</div>
+      <h1>{copy.title}</h1>
+      <p class="hero-lead projects-intro">{copy.intro}</p>
+    </div>
+  </section>
+
+  <section class="project-filters-section">
+    <div class="container">
+      <div class="filter-label">{copy.filter}</div>
+      <div class="project-filters" role="group" aria-label={copy.filter}>
+        <button class="filter-btn active" type="button" data-filter="all">{copy.all}</button>
+        {categories.map((category) => (
+          <button class="filter-btn" type="button" data-filter={slug(category)}>{category}</button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <div class="section-head"><div><h2>{copy.featured}</h2></div></div>
+      <div class="grid" data-project-grid>
+        {featured.map(project => <ProjectCard project={project} lang={lang} />)}
+      </div>
+      <div class="notice nda-notice">{copy.nda}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head"><div><h2>{copy.more}</h2></div></div>
+      <div class="grid" data-project-grid>
+        {more.map(project => <ProjectCard project={project} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© {new Date().getFullYear()} Carlos Faustino</span>
+    <a href={`/${lang}/`}>{copy.back} ↑</a>
+  </div>
+</footer>
+
+<script is:inline>
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  const cards = document.querySelectorAll('[data-project-card]');
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const value = button.dataset.filter;
+
+      filterButtons.forEach((b) => b.classList.remove('active'));
+      button.classList.add('active');
+
+      cards.forEach((card) => {
+        const show = value === 'all' || card.dataset.category === value;
+        card.classList.toggle('project-hidden', !show);
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-open-dialog]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dialog = document.getElementById(button.dataset.openDialog);
+      if (dialog) dialog.showModal();
+    });
+  });
+
+  document.querySelectorAll('[data-close-dialog]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dialog = document.getElementById(button.dataset.closeDialog);
+      if (dialog) dialog.close();
+    });
+  });
+
+  document.querySelectorAll('.project-dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (event) => {
+      const rect = dialog.getBoundingClientRect();
+      const inside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+      if (!inside) dialog.close();
+    });
+  });
+</script>

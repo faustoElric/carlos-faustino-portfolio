@@ -1,0 +1,28 @@
+---
+const { lang = 'es', current = 'home' } = Astro.props;
+const es = lang === 'es';
+---
+<header>
+  <div class="container nav">
+    <a class="brand-wrap" href={`/${lang}/`} aria-label="Carlos Faustino">
+      <span class="brand-mark">CF</span>
+      <span class="brand-text">
+        <strong>Carlos Faustino</strong>
+        <small>Software Engineer</small>
+      </span>
+    </a>
+
+    <nav class="links">
+      <a class={current === 'home' ? 'active' : ''} href={`/${lang}/`}>
+        {es ? 'Perfil' : 'Profile'}
+      </a>
+      <a class={current === 'projects' ? 'active' : ''} href={`/${lang}/projects/`}>
+        {es ? 'Proyectos' : 'Projects'}
+      </a>
+      <a href="https://www.linkedin.com/in/crfaustinohernandez/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <span class="lang-sep">|</span>
+      <a class={lang === 'es' ? 'active' : ''} href={current === 'projects' ? '/es/projects/' : '/es/'}>ES</a>
+      <a class={lang === 'en' ? 'active' : ''} href={current === 'projects' ? '/en/projects/' : '/en/'}>EN</a>
+    </nav>
+  </div>
+</header>

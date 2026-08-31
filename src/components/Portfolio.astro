@@ -1,0 +1,163 @@
+---
+import Header from './Header.astro';
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects.js';
+
+const { lang = 'es' } = Astro.props;
+const es = lang === 'es';
+const featured = projects.filter((p) => p.featured);
+const more = projects.filter((p) => !p.featured);
+const copy = es ? {
+  eyebrow: 'Senior Full Stack Software Engineer',
+  intro: 'Construyo y modernizo aplicaciones web empresariales, APIs, integraciones y plataformas cloud. Más de 10 años trabajando entre frontend, backend, bases de datos, soporte de producción y liderazgo técnico.',
+  projectsTitle: 'Proyectos destacados',
+  projectsText: 'Una selección de proyectos que representan mi trabajo en software empresarial, sector público, cloud y modernización.',
+  moreTitle: 'Más proyectos',
+  moreText: 'Plataformas públicas, integraciones, WordPress, Moodle y frontend moderno.',
+  nda: 'Parte de mi experiencia profesional está sujeta a acuerdos de confidencialidad. Para esos proyectos presento casos de estudio anonimizados que describen mi rol, tecnologías y contribuciones sin publicar código, arquitectura, datos ni documentación propietaria.',
+  skillsTitle: 'Stack tecnológico',
+  skillsText: 'Tecnologías con las que he trabajado en proyectos profesionales.',
+  experienceTitle: 'Experiencia',
+  contactTitle: 'Hablemos',
+  contactText: 'Disponible para oportunidades como Senior Software Engineer, Senior Full Stack Engineer, Backend Engineer y .NET Developer, remotas o presenciales.',
+  viewProjects: 'Ver proyectos',
+  linkedin: 'LinkedIn',
+  email: 'Correo'
+} : {
+  eyebrow: 'Senior Full Stack Software Engineer',
+  intro: 'I build and modernize enterprise web applications, APIs, integrations, and cloud platforms. 10+ years working across frontend, backend, databases, production support, and technical leadership.',
+  projectsTitle: 'Featured projects',
+  projectsText: 'A selection of projects representing my work across enterprise software, public sector, cloud, and modernization.',
+  moreTitle: 'More projects',
+  moreText: 'Public platforms, integrations, WordPress, Moodle, and modern frontend development.',
+  nda: 'Some of my professional work is subject to confidentiality agreements. For those projects, I present anonymized case studies describing my role, technologies, and engineering contributions without publishing proprietary code, architecture, data, or documentation.',
+  skillsTitle: 'Technology stack',
+  skillsText: 'Technologies I have used across professional projects.',
+  experienceTitle: 'Experience',
+  contactTitle: "Let's work together",
+  contactText: 'Open to Senior Software Engineer, Senior Full Stack Engineer, Backend Engineer, and .NET Developer opportunities, remote or on-site.',
+  viewProjects: 'View projects',
+  linkedin: 'LinkedIn',
+  email: 'Email'
+};
+---
+<Header lang={lang} />
+
+<main>
+  <section class="hero">
+    <div class="container hero-copy">
+      <div class="eyebrow">{copy.eyebrow}</div>
+      <h1>Carlos<br/>Faustino</h1>
+      <p class="muted">{copy.intro}</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#projects">{copy.viewProjects}</a>
+        <a class="btn" href="https://www.linkedin.com/in/crfaustinohernandez/" target="_blank" rel="noopener noreferrer">{copy.linkedin} ↗</a>
+        <a class="btn" href="mailto:cr.faustinohernandez@gmail.com">{copy.email}</a>
+      </div>
+      <div class="stack">
+        {['.NET','C#','React','TypeScript','Vue.js','Laravel','REST APIs','SQL','Docker','GCP','AWS','Azure'].map((item) => <span class="chip">{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">{es ? 'Portafolio' : 'Portfolio'}</div>
+          <h2>{copy.projectsTitle}</h2>
+        </div>
+        <p class="muted">{copy.projectsText}</p>
+      </div>
+      <div class="grid">
+        {featured.map((project) => <ProjectCard project={project} lang={lang} />)}
+      </div>
+      <div style="height:1rem"></div>
+      <div class="notice">{copy.nda}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div><h2>{copy.moreTitle}</h2></div>
+        <p class="muted">{copy.moreText}</p>
+      </div>
+      <div class="grid">
+        {more.map((project) => <ProjectCard project={project} lang={lang} />)}
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">{es ? 'Ingeniería' : 'Engineering'}</div><h2>{copy.skillsTitle}</h2></div>
+        <p class="muted">{copy.skillsText}</p>
+      </div>
+      <div class="skill-columns">
+        <div class="skill-block">
+          <h3>Frontend</h3>
+          <ul><li>React</li><li>Vue.js</li><li>TypeScript</li><li>JavaScript</li><li>Astro</li></ul>
+        </div>
+        <div class="skill-block">
+          <h3>Backend</h3>
+          <ul><li>.NET / C#</li><li>PHP / Laravel</li><li>Spring Boot</li><li>REST APIs</li></ul>
+        </div>
+        <div class="skill-block">
+          <h3>{es ? 'Datos' : 'Data'}</h3>
+          <ul><li>SQL Server</li><li>PostgreSQL</li><li>MySQL</li></ul>
+        </div>
+        <div class="skill-block">
+          <h3>Cloud / DevOps</h3>
+          <ul><li>Google Cloud</li><li>AWS</li><li>Azure</li><li>Docker</li><li>CI/CD</li><li>Git</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">{es ? 'Trayectoria' : 'Career'}</div><h2>{copy.experienceTitle}</h2></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>CEREBR4L — Full Stack Engineer</h3>
+          <p>2024 — {es ? 'Actualidad' : 'Present'}</p>
+        </div>
+        <div class="timeline-item">
+          <h3>DC Nearshore — Software Engineer</h3>
+          <p>2021 — 2024</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Weedmaps — Technical Support Engineering Leader / Software Development Engineer</h3>
+          <p>2021 — 2023</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Code Castle — Full Stack Developer / Team Lead</h3>
+          <p>2017 — 2020</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="eyebrow">{es ? 'Contacto' : 'Contact'}</div>
+      <h2>{copy.contactTitle}</h2>
+      <p class="muted" style="max-width:720px">{copy.contactText}</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:cr.faustinohernandez@gmail.com">cr.faustinohernandez@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/crfaustinohernandez/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© {new Date().getFullYear()} Carlos Faustino</span>
+    <span>Astro · {es ? 'Español / Inglés' : 'English / Spanish'}</span>
+  </div>
+</footer>

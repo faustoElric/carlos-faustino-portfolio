@@ -1,0 +1,88 @@
+---
+const { project, lang = 'es' } = Astro.props;
+const t = (obj) => obj?.[lang] ?? '';
+const liveLabel = lang === 'es' ? 'Ver sitio' : 'View live site';
+const detailsLabel = lang === 'es' ? 'Ver detalles' : 'View details';
+const closeLabel = lang === 'es' ? 'Cerrar' : 'Close';
+const confidentialLabel = lang === 'es' ? 'Confidencial' : 'Confidential';
+const liveBadge = lang === 'es' ? 'Público' : 'Live';
+const contributionTitle = lang === 'es' ? 'Contribuciones' : 'Contributions';
+const stackTitle = lang === 'es' ? 'Stack tecnológico' : 'Technology stack';
+const confidentialityNote = lang === 'es'
+  ? 'Este caso se presenta de forma anonimizada. No se publica código fuente, arquitectura interna, datos, capturas privadas ni documentación propietaria.'
+  : 'This case is presented in anonymized form. No source code, internal architecture, data, private screenshots, or proprietary documentation is published.';
+
+const categoryKey = t(project.category).toLowerCase().replaceAll(' ', '-').replaceAll('&', 'and');
+const dialogId = `project-${project.id}`;
+---
+<article
+  class:list={['card', project.featured && 'featured']}
+  data-project-card
+  data-category={categoryKey}
+>
+  <div class="top">
+    <div>
+      <div class="eyebrow">{t(project.category)}</div>
+      <h3>{t(project.title)}</h3>
+    </div>
+    <div class="badge-stack">
+      {project.confidential && <span class="tag confidential">{confidentialLabel}</span>}
+      {project.url && <span class="tag live">{liveBadge}</span>}
+    </div>
+  </div>
+
+  <p><strong>{t(project.role)}</strong></p>
+  <p>{t(project.description)}</p>
+
+  <div class="tech">
+    {project.tech.slice(0, 6).map((item) => <span>#{item.replaceAll(' ', '')}</span>)}
+  </div>
+
+  <div class="actions">
+    <button class="text-action" type="button" data-open-dialog={dialogId}>{detailsLabel}</button>
+    {project.url && (
+      <a href={project.url} target="_blank" rel="noopener noreferrer">{liveLabel} ↗</a>
+    )}
+  </div>
+</article>
+
+<dialog id={dialogId} class="project-dialog">
+  <div class="dialog-shell">
+    <div class="dialog-head">
+      <div>
+        <div class="eyebrow">{t(project.category)}</div>
+        <h2>{t(project.title)}</h2>
+        <p class="dialog-role">{t(project.role)}</p>
+      </div>
+      <button class="dialog-close" type="button" data-close-dialog={dialogId} aria-label={closeLabel}>×</button>
+    </div>
+
+    <p class="dialog-description">{t(project.description)}</p>
+
+    <div class="dialog-grid">
+      <div>
+        <h3>{contributionTitle}</h3>
+        <ul class="dialog-list">
+          {project.contributions[lang].map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h3>{stackTitle}</h3>
+        <div class="stack dialog-stack">
+          {project.tech.map((item) => <span class="chip">{item}</span>)}
+        </div>
+
+        {project.confidential && (
+          <div class="notice dialog-notice">{confidentialityNote}</div>
+        )}
+
+        {project.url && (
+          <a class="btn primary dialog-live" href={project.url} target="_blank" rel="noopener noreferrer">
+            {liveLabel} ↗
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</dialog>
