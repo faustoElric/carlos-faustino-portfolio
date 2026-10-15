@@ -7,10 +7,11 @@ const closeLabel = lang === 'es' ? 'Cerrar' : 'Close';
 const confidentialLabel = lang === 'es' ? 'Confidencial' : 'Confidential';
 const liveBadge = lang === 'es' ? 'Público' : 'Live';
 const contributionTitle = lang === 'es' ? 'Contribuciones' : 'Contributions';
-const stackTitle = lang === 'es' ? 'Stack tecnológico' : 'Technology stack';
+const stackTitle = lang === 'es' ? 'Stack utilizado' : 'Technology stack';
+const screenshotTitle = lang === 'es' ? 'Screenshot del proyecto' : 'Project screenshot';
 const confidentialityNote = lang === 'es'
-  ? 'Este caso se presenta de forma anonimizada. No se publica código fuente, arquitectura interna, datos, capturas privadas ni documentación propietaria.'
-  : 'This case is presented in anonymized form. No source code, internal architecture, data, private screenshots, or proprietary documentation is published.';
+  ? 'Puedes reemplazar este placeholder por un screenshot real del home o login guardando la imagen en /public/screenshots/ y actualizando la ruta en src/data/projects.js.'
+  : 'You can replace this placeholder with a real home or login screenshot by saving the image under /public/screenshots/ and updating the path in src/data/projects.js.';
 
 const categoryKey = t(project.category).toLowerCase().replaceAll(' ', '-').replaceAll('&', 'and');
 const dialogId = `project-${project.id}`;
@@ -20,6 +21,10 @@ const dialogId = `project-${project.id}`;
   data-project-card
   data-category={categoryKey}
 >
+  <div class="project-thumb">
+    <img src={project.screenshot ?? '/screenshots/erp.svg'} alt={`${t(project.title)} screenshot`} loading="lazy" />
+  </div>
+
   <div class="top">
     <div>
       <div class="eyebrow">{t(project.category)}</div>
@@ -57,6 +62,11 @@ const dialogId = `project-${project.id}`;
       <button class="dialog-close" type="button" data-close-dialog={dialogId} aria-label={closeLabel}>×</button>
     </div>
 
+    <div class="dialog-preview">
+      <div class="dialog-preview-label">{screenshotTitle}</div>
+      <img src={project.screenshot ?? '/screenshots/erp.svg'} alt={`${t(project.title)} screenshot`} loading="lazy" />
+    </div>
+
     <p class="dialog-description">{t(project.description)}</p>
 
     <div class="dialog-grid">
@@ -69,13 +79,15 @@ const dialogId = `project-${project.id}`;
 
       <div>
         <h3>{stackTitle}</h3>
+        <ul class="stack-list">
+          {project.tech.map((item) => <li>{item}</li>)}
+        </ul>
+
         <div class="stack dialog-stack">
           {project.tech.map((item) => <span class="chip">{item}</span>)}
         </div>
 
-        {project.confidential && (
-          <div class="notice dialog-notice">{confidentialityNote}</div>
-        )}
+        <div class="notice dialog-notice">{confidentialityNote}</div>
 
         {project.url && (
           <a class="btn primary dialog-live" href={project.url} target="_blank" rel="noopener noreferrer">

@@ -396,3 +396,39 @@ footer { border-top:1px solid var(--line); padding:2rem 0 3rem; color:var(--mute
   .dialog-shell { padding: 1.1rem; }
   .project-dialog { max-height: 90vh; }
 }
+
+
+.project-thumb {
+  border: 1px solid rgba(148,180,218,.14);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: #08111f;
+  aspect-ratio: 16 / 9;
+}
+.project-thumb img,
+.dialog-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.dialog-preview {
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #08111f;
+}
+.dialog-preview-label {
+  padding: .75rem 1rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  font-size: .82rem;
+}
+.stack-list {
+  margin: 0 0 1rem 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+.stack-list li { margin-bottom: .38rem; }

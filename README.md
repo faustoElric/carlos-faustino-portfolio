@@ -131,3 +131,23 @@ The Projects page keeps the two-page architecture and adds:
 
 - TUNNME — Ruby on Rails / Bootstrap
 - Tailwind CSS added to the general frontend technology stack.
+
+## Screenshots per project
+
+Each project now supports a screenshot shown on the card and inside the modal.
+
+Current placeholders live under:
+
+- `public/screenshots/<project-id>.svg`
+
+To replace a placeholder with a real screenshot, save your image using the same base name, for example:
+
+- `public/screenshots/activa.jpg`
+- `public/screenshots/apatel.jpg`
+- `public/screenshots/sepia.jpg`
+
+Then update `src/data/projects.js` and change the `screenshot` path accordingly.
+
+Recommended source:
+- home page screenshot for public websites
+- login page screenshot for platforms where the login better represents the product

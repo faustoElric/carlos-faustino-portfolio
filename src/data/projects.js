@@ -39,6 +39,7 @@ export const projects = [
       "REST APIs",
       "SQL Server"
     ],
+    "screenshot": "/screenshots/erp.svg",
     "confidential": true,
     "url": null
   },
@@ -81,6 +82,7 @@ export const projects = [
       "Mapbox",
       "REST APIs"
     ],
+    "screenshot": "/screenshots/geo.svg",
     "confidential": true,
     "url": null
   },
@@ -123,6 +125,7 @@ export const projects = [
       "REST APIs",
       "SQL"
     ],
+    "screenshot": "/screenshots/aircraft.svg",
     "confidential": true,
     "url": null
   },
@@ -167,6 +170,7 @@ export const projects = [
       "CI/CD",
       "MySQL / MariaDB"
     ],
+    "screenshot": "/screenshots/cloud.svg",
     "confidential": true,
     "url": null
   },
@@ -208,6 +212,7 @@ export const projects = [
       "JavaScript / TypeScript",
       "REST APIs"
     ],
+    "screenshot": "/screenshots/pct.svg",
     "confidential": true,
     "url": null
   },
@@ -249,6 +254,7 @@ export const projects = [
       "JavaScript",
       "REST APIs"
     ],
+    "screenshot": "/screenshots/customs.svg",
     "confidential": true,
     "url": null
   },
@@ -289,6 +295,7 @@ export const projects = [
       "HTML5",
       "CSS3"
     ],
+    "screenshot": "/screenshots/activa.svg",
     "confidential": false,
     "url": "https://www.activa-mkt.com/es/"
   },
@@ -330,6 +337,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
+    "screenshot": "/screenshots/apatel.svg",
     "confidential": false,
     "url": "https://apatelpanama.com/"
   },
@@ -371,6 +379,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
+    "screenshot": "/screenshots/sepia.svg",
     "confidential": false,
     "url": "https://sepia.lat/"
   },
@@ -412,6 +421,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
+    "screenshot": "/screenshots/sepia-aula.svg",
     "confidential": false,
     "url": "https://aula.sepia.lat/"
   },
@@ -454,6 +464,7 @@ export const projects = [
       "Pagadito API",
       "Payment Gateway"
     ],
+    "screenshot": "/screenshots/oirsa.svg",
     "confidential": false,
     "url": "https://aulavirtual.oirsa.org/"
   },
@@ -495,6 +506,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
+    "screenshot": "/screenshots/coopbio.svg",
     "confidential": false,
     "url": "https://coopbiocap.com/"
   },
@@ -530,6 +542,7 @@ export const projects = [
       ]
     },
     "tech": [],
+    "screenshot": "/screenshots/cerebr4l.svg",
     "confidential": false,
     "url": "https://cerebr4l.com/en/"
   },
@@ -565,6 +578,7 @@ export const projects = [
       ]
     },
     "tech": [],
+    "screenshot": "/screenshots/quebec.svg",
     "confidential": false,
     "url": "https://quebec.earth/"
   },
@@ -607,6 +621,7 @@ export const projects = [
       "Ruby on Rails",
       "Bootstrap"
     ],
+    "screenshot": "/screenshots/tunnme.svg",
     "confidential": false,
     "url": "https://tunnme.com/"
   }

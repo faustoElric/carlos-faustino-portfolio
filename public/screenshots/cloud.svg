@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1a2e"/>
+      <stop offset="100%" stop-color="#153052"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f9cff"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" rx="36" fill="url(#bg)"/>
+  <rect x="44" y="42" width="1112" height="64" rx="18" fill="#08111f" opacity="0.92"/>
+  <circle cx="88" cy="74" r="10" fill="#4f9cff"/>
+  <circle cx="118" cy="74" r="10" fill="#38bdf8"/>
+  <circle cx="148" cy="74" r="10" fill="#38d6a3"/>
+  <rect x="196" y="58" width="540" height="32" rx="12" fill="#10233b"/>
+  <rect x="44" y="136" width="1112" height="540" rx="28" fill="#0f223a"/>
+  <rect x="88" y="186" width="420" height="22" rx="10" fill="url(#bar)" opacity="0.95"/>
+  <rect x="88" y="230" width="730" height="22" rx="10" fill="#27405f"/>
+  <rect x="88" y="268" width="660" height="22" rx="10" fill="#27405f"/>
+  <rect x="88" y="346" width="312" height="170" rx="24" fill="#10233b"/>
+  <rect x="430" y="346" width="312" height="170" rx="24" fill="#10233b"/>
+  <rect x="772" y="346" width="284" height="250" rx="24" fill="#10233b"/>
+  <text x="88" y="590" fill="#f5f8fc" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">On-Premise to GCP Migration</text>
+  <text x="88" y="632" fill="#9db0c7" font-family="Arial, Helvetica, sans-serif" font-size="24">Replace with a real home/login screenshot in /public/screenshots/cloud.jpg</text>
+</svg>
