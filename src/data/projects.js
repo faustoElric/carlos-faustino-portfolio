@@ -295,7 +295,7 @@ export const projects = [
       "HTML5",
       "CSS3"
     ],
-    "screenshot": "/screenshots/activa.svg",
+    "screenshot": "/screenshots/activa.webp",
     "confidential": false,
     "url": "https://www.activa-mkt.com/es/"
   },
@@ -337,7 +337,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
-    "screenshot": "/screenshots/apatel.svg",
+    "screenshot": "/screenshots/apatel.webp",
     "confidential": false,
     "url": "https://apatelpanama.com/"
   },
@@ -379,7 +379,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
-    "screenshot": "/screenshots/sepia.svg",
+    "screenshot": "/screenshots/sepia.webp",
     "confidential": false,
     "url": "https://sepia.lat/"
   },
@@ -421,7 +421,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
-    "screenshot": "/screenshots/sepia-aula.svg",
+    "screenshot": "/screenshots/sepia-aula.webp",
     "confidential": false,
     "url": "https://aula.sepia.lat/"
   },
@@ -464,7 +464,7 @@ export const projects = [
       "Pagadito API",
       "Payment Gateway"
     ],
-    "screenshot": "/screenshots/oirsa.svg",
+    "screenshot": "/screenshots/oirsa.webp",
     "confidential": false,
     "url": "https://aulavirtual.oirsa.org/"
   },
@@ -506,7 +506,7 @@ export const projects = [
       "CSS3",
       "JavaScript"
     ],
-    "screenshot": "/screenshots/coopbio.svg",
+    "screenshot": "/screenshots/coopbio.webp",
     "confidential": false,
     "url": "https://coopbiocap.com/"
   },
@@ -542,7 +542,7 @@ export const projects = [
       ]
     },
     "tech": [],
-    "screenshot": "/screenshots/cerebr4l.svg",
+    "screenshot": "/screenshots/cerebr4l.webp",
     "confidential": false,
     "url": "https://cerebr4l.com/en/"
   },
@@ -578,7 +578,7 @@ export const projects = [
       ]
     },
     "tech": [],
-    "screenshot": "/screenshots/quebec.svg",
+    "screenshot": "/screenshots/quebec.webp",
     "confidential": false,
     "url": "https://quebec.earth/"
   },
@@ -621,7 +621,7 @@ export const projects = [
       "Ruby on Rails",
       "Bootstrap"
     ],
-    "screenshot": "/screenshots/tunnme.svg",
+    "screenshot": "/screenshots/tunnme.webp",
     "confidential": false,
     "url": "https://tunnme.com/"
   }

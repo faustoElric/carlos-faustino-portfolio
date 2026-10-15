@@ -83,10 +83,6 @@ const dialogId = `project-${project.id}`;
           {project.tech.map((item) => <li>{item}</li>)}
         </ul>
 
-        <div class="stack dialog-stack">
-          {project.tech.map((item) => <span class="chip">{item}</span>)}
-        </div>
-
         <div class="notice dialog-notice">{confidentialityNote}</div>
 
         {project.url && (
